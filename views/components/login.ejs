@@ -1,0 +1,43 @@
+<!-- For for loggin in User -->
+
+<form method="POST" id="loginForm">
+    <div class="username">
+        <label for="username">Username: </label>
+        <input type="text" name="username" id="username" required>
+    </div>
+    <div class="password">
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" required>
+    </div>  
+    <button type="submit">Login</button>
+</form>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent default form submission
+    
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+    
+        try {
+            const response = await fetch('/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+                        
+            if (response.ok) {
+                alert('Login Successful!');
+                window.location.href = '/files/dashboard'; // Redirect user to dashboard
+            } else {
+                const data = await response.json();
+                alert(data.message || 'Sign Up failed!');
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            alert('An error occurred. Please try again.');
+        }
+    });
+    </script>

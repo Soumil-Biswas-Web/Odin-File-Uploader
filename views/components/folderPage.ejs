@@ -1,0 +1,24 @@
+<!-- Page when a folder is opened, for all folders -->
+
+<div>
+    <button onclick="showDialog('create-file-dialog', '<%=self.id%>')">+ Add Files</button>
+    <button onclick="showDialog('create-folder-dialog', '<%=self.id%>')">+ Add Folders</button>
+    <% if (self.children.length === 0 && self.files.length === 0) { %>
+        <p>Such empty, much wow...</p>
+    <% } else { %>
+        <h2>Folders</h2>
+        <div class="folders">            
+            <% for (let folder of self.children) {%>
+                <%- include('folderComponent.ejs', {folder}) %>
+            <% } %>
+        </div>
+        <h2>Files</h2>
+        <div class="files">
+            <% for (let file of self.files) {%>
+                <%- include('fileComponent.ejs', {file}) %>
+            <% } %>
+        </div>        
+    <% } %>
+</div>
+
+<script defer src="/driverFunctions/showDialog.js"></script>

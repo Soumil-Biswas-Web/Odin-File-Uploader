@@ -1,0 +1,25 @@
+<!-- Home page display, for introduction to page -->
+
+<div>
+    <p>Upload, store and share files and folders!</p>
+    <% if (!user) { %>
+        <p>
+            <span>
+                <button>Login</button>
+            </span> 
+            or 
+            <span>
+                <button>Sign Up</button>
+            </span> 
+            now!
+        </p>
+    <% } else { %>
+        <p>Go to 
+            <span>
+                <a href="/files/dashboard">
+                    Dashboard
+                </a>
+            </span>
+        </p>
+    <% } %>
+</div>

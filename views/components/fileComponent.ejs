@@ -1,0 +1,13 @@
+<div class="file">
+    <div>
+        <img src="/assets/file-check-outline.svg" alt="file">    
+        <a>
+            <%= file.name %>
+        </a>
+    </div>
+    <div>
+        <button onclick="showDialog('delete-file-dialog', '<%=file.id%>')"><img src="/assets/trash-can.svg" alt="delete_icon"></button>
+        <button onclick="showDialog('share-file-dialog', '<%=file.id%>')"><img src="/assets/share-variant.svg" alt="share"></button>
+        <button onclick='showDialog("info-file-dialog", <%= JSON.stringify(file) %>)'><img src="/assets/information-slab-circle-outline.svg" alt="info"></button>
+    </div>
+</div>

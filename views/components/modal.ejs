@@ -1,0 +1,79 @@
+<dialog id="create-folder-dialog">
+    <form action="/files/folder" method="post">
+        <input class="zonerId" type="hidden" name="parentFolderId" value="">
+
+        <p>Pick a folder Name:</p>
+        <input type="text" name="folderName" id="create-folder-name" placeholder="Folder name">
+
+        <div class="button_holder">
+            <button type="submit">Submit</button>
+            <button type="button" onclick="closeDialog('create-folder-dialog')">Cancel</button>
+        </div>
+    </form>
+</dialog>
+
+<dialog id="create-file-dialog">
+    <form enctype="multipart/form-data" action="/files/upload" method="post">
+        <input class="zonerId" type="hidden" name="parentFolderId" value="">
+
+        <p>Upload upto 5 files</p>
+
+        <label for="file" id="dropzone" class="dropzone">
+            <p>Drop Files here or Click to Upload:</p>
+            <input type="file" name="file" id="file" multiple hidden >
+        </label>
+
+        <p>File preview is not Supported</p>
+        <p>Max file size: 5 MB</p>
+
+        <div class="button_holder">
+            <button type="submit">Submit</button>
+            <button type="button" onclick="closeDialog('create-file-dialog')">Cancel</button>
+        </div>
+    </form>
+</dialog>
+
+<dialog id="delete-folder-dialog">
+    <p>Are you sure you want to delete this folder?</p>
+    <div class="button_holder">
+        <button class="linker"><a href="">Yes</a></button>
+        <button onclick="closeDialog('delete-folder-dialog')">No</button>
+    </div>    
+</dialog>
+
+<dialog id="delete-file-dialog">
+    <p>Are you sure you want to delete this file?</p>
+    <div class="button_holder">
+        <button class="linker"><a href="">Yes</a></button>
+        <button onclick="closeDialog('delete-file-dialog')">No</button>
+    </div>    
+</dialog>
+
+<dialog id="share-folder-dialog">
+    <p>Share this folder using this link:</p>
+    <p>sharing link</p>
+    <button onclick="closeDialog('share-folder-dialog')">Cancel</button>
+</dialog>
+
+<dialog id="share-file-dialog">
+    <p>Share this file using this link:</p>
+    <p>sharing link</p>
+    <button onclick="closeDialog('share-file-dialog')">Cancel</button>
+</dialog>
+
+<dialog id="info-folder-dialog">
+    <p>Here's the folder info:</p>
+    <p>Folder Name: <span>helo</span></p>
+    <p>Uploaded at: <span>helo</span></p>
+    <button onclick="closeDialog('info-folder-dialog')">Ok</button>
+</dialog>
+
+<dialog id="info-file-dialog">
+    <p>Here's the file info:</p>
+    <p>File Name: <span>helo</span></p>
+    <p>Uploaded at: <span>helo</span></p>
+    <p>File Size: <span>helo</span></p>
+    <button onclick="closeDialog('info-file-dialog')">Ok</button>
+</dialog>
+
+<script defer src="/driverFunctions/showDialog.js"></script>

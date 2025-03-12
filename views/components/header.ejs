@@ -1,0 +1,19 @@
+<header>
+    <div>
+        <a href="/"><h1>Odin-File-Uploader</h1></a>
+        <% if (locals.user) {%>
+            <div class="logged_in">
+                <p id="userGreeting">Welcome, <%= user.username %></p> 
+                <a href="/add"><p>+ New Post</p></a>
+                <a href="/auth/log-out">
+                    <button id="logoutBtn">Logout</button>
+                </a>
+            </div>
+        <% } else { %>
+                <div class="default">
+                    <a href="/auth/login"><p>Login</p></a>
+                    <a href="/auth/signUp"><p>Sign Up</p></a>
+                </div>
+        <% } %>
+    </div>
+</header>

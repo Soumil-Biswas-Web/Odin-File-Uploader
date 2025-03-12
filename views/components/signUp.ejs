@@ -1,0 +1,50 @@
+<!-- For for signing up new user -->
+
+<form method="POST" id="signUpForm">
+    <div class="username">
+        <label for="username">Username: </label>
+        <input type="text" name="username" id="username" required>
+    </div>
+    <div class="password">
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" required>
+    </div>
+    <div class="password2">
+        <label for="password2">Enter Password Again: </label>
+        <input type="password" name="password2" id="password2" required>
+    </div> 
+    <button type="submit">Sign Up</button>
+</form>
+
+<script>
+    document.getElementById('signUpForm').addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent default form submission
+      
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const password2 = document.getElementById('password2').value;        
+    
+        try {
+            const response = await fetch('/auth/signUp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password, password2 })
+            });
+    
+            const data = await response.json();
+            
+            if (response.ok) {
+                alert('Sign Up Successful!');
+                window.location.href = '/files/dashboard'; // Redirect user to dashboard
+            } else {
+                alert(data.message || 'Sign Up failed!');
+            }
+        } catch (error) {
+            console.log(error);
+            console.error('Sign Up error:', error);
+            alert('An error occurred. Please try again.');
+        }
+    });
+</script>

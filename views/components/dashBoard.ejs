@@ -1,0 +1,22 @@
+<!-- Dashboard/ Desktop, for all folders and files -->
+
+<div>
+    <button onclick="showDialog('create-file-dialog')">+ Add Files</button>
+    <button onclick="showDialog('create-folder-dialog')">+ Add Folders</button>
+    <% if (folders.length === 0 && files.length === 0) { %>
+        <p>Such empty, much wow...</p>
+    <% } else { %>
+        <h2>Folders</h2>
+        <div class="folders">            
+            <% for (let folder of folders) {%>
+                <%- include('folderComponent.ejs', {folder}) %>
+            <% } %>
+        </div>
+        <h2>Files</h2>
+        <div class="files">
+            <% for (let file of files) {%>
+                <%- include('fileComponent.ejs', {file}) %>
+            <% } %>
+        </div>        
+    <% } %>
+</div>
